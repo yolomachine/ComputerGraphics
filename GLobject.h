@@ -5,12 +5,12 @@ class GLobject {
 public:
 	GLobject(GLfloat* vertexArray, GLuint size, GLenum usage)
 	: VAO(0), VBO(0), vertexArraySize(size) {
-		update(vertexArray, size, usage);
+	    update(vertexArray, size, usage);
 	};
 	~GLobject() {
-		unbindVertexArray();
-		deleteBuffer();
-		deleteVertexArray();
+	    unbindVertexArray();
+	    deleteBuffer();
+	    deleteVertexArray();
 	}
 
 	virtual void draw() = 0;
@@ -42,12 +42,12 @@ public:
 	GLskybox(GLfloat* vertexArray, GLuint size, GLenum usage) : GLobject(vertexArray, size, usage) {};
 
 	void setFacesPaths(
-		GLchar* right,
-		GLchar* left,
-		GLchar* up,
-		GLchar* down,
-		GLchar* back,
-		GLchar* front
+	    GLchar* right,
+	    GLchar* left,
+	    GLchar* up,
+	    GLchar* down,
+	    GLchar* back,
+	    GLchar* front
 	);
 
 	void bindTexture();

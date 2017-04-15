@@ -12,12 +12,12 @@ glm::mat4 Camera::getPerspective() {
 void Camera::move(CameraMovement direction, GLfloat deltaTime) {
 	GLfloat velocity = movementSpeed * deltaTime;
 	switch (direction) {
-	case CameraMovement::Forward:	position += front * velocity; break;
-	case CameraMovement::Backward:	position -= front * velocity; break;
-	case CameraMovement::Left:		position -= right * velocity; break;
-	case CameraMovement::Right:		position += right * velocity; break;
-	case CameraMovement::Up:		position += up * velocity; break;
-	case CameraMovement::Down:		position -= up * velocity; break;
+	case CameraMovement::Forward:   position += front * velocity; break;
+	case CameraMovement::Backward:  position -= front * velocity; break;
+	case CameraMovement::Left:      position -= right * velocity; break;
+	case CameraMovement::Right:     position += right * velocity; break;
+	case CameraMovement::Up:        position += up * velocity; break;
+	case CameraMovement::Down:      position -= up * velocity; break;
 	}
 
 	viewMatrix = glm::lookAt(position, position + front, up);
@@ -31,25 +31,25 @@ void Camera::processMouseMovement(GLfloat xoffset, GLfloat yoffset) {
 	pitch += yoffset;
 
 	if (pitch > 89.0f)
-		pitch = 89.0f;
+	    pitch = 89.0f;
 	if (pitch < -89.0f)
-		pitch = -89.0f;
+	    pitch = -89.0f;
 
 	updateCameraVectors();
 }
 
 void Camera::setDefaults() {
-	position		= defaultPos;
-	front			= defaultFront;
-	up				= defaultUp;
-	yaw				= defaultYaw;
-	pitch			= defaultPitch;
-	movementSpeed	= defaultSpeed;
-	sensitivity		= defaultSensitivity;
-	fov				= defaultFov;
-	minFov			= defaultMinFov;
-	maxFov			= defaultMaxFov;
-	velocity		= defaultVelocity;
+	position        = defaultPos;
+	front           = defaultFront;
+	up              = defaultUp;
+	yaw             = defaultYaw;
+	pitch           = defaultPitch;
+	movementSpeed   = defaultSpeed;
+	sensitivity     = defaultSensitivity;
+	fov             = defaultFov;
+	minFov          = defaultMinFov;
+	maxFov          = defaultMaxFov;
+	velocity        = defaultVelocity;
 	updateCameraVectors();
 }
 
@@ -61,7 +61,7 @@ void Camera::updateCameraVectors() {
 
 	front = glm::normalize(newFront);
 	right = glm::normalize(glm::cross(front, worldUp));
-	up	  = glm::normalize(glm::cross(right, front));
+	up    = glm::normalize(glm::cross(right, front));
 
 	viewMatrix = glm::lookAt(position, position + front, up);
 }

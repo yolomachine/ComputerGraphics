@@ -3,7 +3,6 @@
 
 class Window {
 public:
-
 	struct Modes {
 		GLboolean fullscreen;
 		GLboolean resizable;
@@ -26,19 +25,19 @@ public:
 		int &&w = 0, 
 		int &&h = 0, 
 		char* title = "Window", 
-		GLboolean fullscreen	 = GL_TRUE, 
-		GLboolean resizable		 = GL_FALSE, 
+		GLboolean fullscreen     = GL_TRUE, 
+		GLboolean resizable      = GL_FALSE, 
 		GLboolean cursorDisabled = GL_TRUE, 
-		GLboolean blending		 = GL_TRUE, 
+		GLboolean blending       = GL_TRUE, 
 		GLboolean multisampling  = GL_TRUE
 	)	: width(w), height(h), title(title) {
-		modes.fullscreen		= fullscreen;
-		modes.resizable			= resizable;
-		modes.cursorDisabled	= cursorDisabled;
-		modes.blending			= blending;
-		modes.multisampling		= multisampling;
-		modes.sepia				= 0;
-		glfwWindowPointer		= 0;
+		modes.fullscreen        = fullscreen;
+		modes.resizable         = resizable;
+		modes.cursorDisabled    = cursorDisabled;
+		modes.blending          = blending;
+		modes.multisampling     = multisampling;
+		modes.sepia             = 0;
+		glfwWindowPointer       = 0;
 	};
 	~Window() {};
 
