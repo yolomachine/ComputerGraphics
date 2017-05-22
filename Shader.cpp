@@ -45,6 +45,14 @@ void Shader::setUniform1i(const GLchar* name, bool uniform) {
 	glUniform1i(glGetUniformLocation(program, name), uniform);
 }
 
+void Shader::setUniform3f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z) {
+    glUniform3f(glGetUniformLocation(program, name), x, y, z);
+}
+
+void Shader::setUniform3f(const GLchar* name, glm::vec3 vec) {
+    glUniform3f(glGetUniformLocation(program, name), vec.x, vec.y, vec.z);
+}
+
 void Shader::setUniformMat4fv(const GLchar * name, float* value, GLsizei count, GLboolean transpose) {
 	glUniformMatrix4fv(glGetUniformLocation(program, name), count, transpose, value);
 }

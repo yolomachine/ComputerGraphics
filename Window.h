@@ -25,7 +25,7 @@ public:
 		int &&w = 0, 
 		int &&h = 0, 
 		char* title = "Window", 
-		GLboolean fullscreen     = GL_TRUE, 
+		GLboolean fullscreen     = GL_FALSE, 
 		GLboolean resizable      = GL_FALSE, 
 		GLboolean cursorDisabled = GL_TRUE, 
 		GLboolean blending       = GL_TRUE, 

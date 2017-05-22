@@ -6,20 +6,23 @@ glm::mat4 Camera::getView() {
 }
 
 glm::mat4 Camera::getPerspective() {
-	return glm::perspective(fov, (GLfloat)screen_width / (GLfloat)screen_height, 0.1f, 200.0f);
+	return glm::perspective(fov, (GLfloat)screen_width / (GLfloat)screen_height, 0.1f, 500.0f);
 }
 
 void Camera::move(CameraMovement direction, GLfloat deltaTime) {
+    GLboolean locked = GL_FALSE;
+    GLfloat yPosLock = position.y;
 	GLfloat velocity = movementSpeed * deltaTime;
 	switch (direction) {
 	case CameraMovement::Forward:   position += front * velocity; break;
 	case CameraMovement::Backward:  position -= front * velocity; break;
 	case CameraMovement::Left:      position -= right * velocity; break;
 	case CameraMovement::Right:     position += right * velocity; break;
-	case CameraMovement::Up:        position += up * velocity; break;
-	case CameraMovement::Down:      position -= up * velocity; break;
+    case CameraMovement::Up:        !locked ? (position += up * velocity) : position; break;
+    case CameraMovement::Down:      !locked ? (position -= up * velocity) : position; break;
 	}
 
+    //position.y = yPosLock;
 	viewMatrix = glm::lookAt(position, position + front, up);
 };
 
@@ -55,9 +58,9 @@ void Camera::setDefaults() {
 
 void Camera::updateCameraVectors() {
 	glm::vec3 newFront;
-	newFront.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-	newFront.y = sin(glm::radians(pitch));
-	newFront.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    newFront.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    newFront.y = sin(glm::radians(pitch));
+    newFront.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
 
 	front = glm::normalize(newFront);
 	right = glm::normalize(glm::cross(front, worldUp));

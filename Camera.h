@@ -5,10 +5,10 @@
 
 enum class CameraMovement { Forward, Backward, Left, Right, Up, Down };
 
-static const glm::vec3 defaultPos       = glm::vec3(0.0f, 0.0f, 5.0f);
+static const glm::vec3 defaultPos       = glm::vec3(12.0f, 3.0f, 0.0f);
 static const glm::vec3 defaultFront     = glm::vec3(0.0f, 0.0f, -1.0f);
 static const glm::vec3 defaultUp        = glm::vec3(0.0f, 1.0f, 0.0f);
-static const GLfloat defaultYaw         = -90.0f;
+static const GLfloat defaultYaw         = 180.0f;
 static const GLfloat defaultPitch       = 0.0f;
 static const GLfloat defaultSpeed       = 10.0f;
 static const GLfloat defaultSensitivity = 0.25f;
@@ -37,7 +37,7 @@ public:
 	)
 	    : position(pos), up(up), worldUp(up), front(front), yaw(yaw), pitch(pitch), 
 	      movementSpeed(speed), sensitivity(sensitivity), fov(fov), minFov(minFov), 
-	      maxFov(maxFov),velocity(velocity), initialState(true) {
+	      maxFov(maxFov), velocity(velocity), initialState(true) {
 	    updateCameraVectors();
 	};
 	~Camera() {};
@@ -68,6 +68,6 @@ public:
 
 	bool initialState;
 
-private:
 	void updateCameraVectors();
+//private:
 };
